@@ -1,0 +1,31 @@
+<h2>Add new user</h2>
+<a [routerLink]="['/admin/']">Back</a>
+<form [formGroup]="newUser">
+  <fieldset>
+    <p>{{errorMessage}}</p>
+    <legend>New user details</legend>
+    <label for="email">Email address</label>
+    <input id="email" type="text" formControlName="email"/>
+    <br>
+    <label for="username">Username</label>
+    <input id="username" type="text" formControlName="username"/>
+    <br>
+    <label for="firstName">First name</label>
+    <input id="firstName" type="text" formControlName="firstName"/>
+    <br>
+    <label for="surName">Family name (Surname)</label>
+    <input id="surName" type="text" formControlName="surName"/>
+    <br>
+    <label for="scope">Select user access level</label>
+    <select id="scope" formControlName="scope">
+      <option value="user">Basic access</option>
+      <option value="admin">Admin access</option>
+    </select>
+    <br>
+    <label for="password">Password (Optional)</label>
+    <input id="password" type="password" formControlName="password"/>
+    <p>Password will default to 'test'</p>
+    <input type="submit" value="Add user" (click)='submitNewUser()'/>
+    <input type="reset" value="Reset"/>
+  </fieldset>
+</form>

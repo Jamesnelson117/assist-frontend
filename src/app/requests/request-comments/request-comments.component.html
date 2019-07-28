@@ -1,0 +1,23 @@
+<button (click)="toggleFormVisibility()">Add comment</button>
+
+<form [formGroup]="newComment">
+  <fieldset>
+    <legend>New Comment</legend>
+    <label for="message">Message</label>
+    <textarea id="message" formControlName="message"></textarea>
+    <br/>
+    <input type="submit" value="Add comment" (click)="addNewComment()"/>
+    <input type="reset" value="Reset"/>
+  </fieldset>
+</form>
+
+<div *ngIf="comments.length">
+  <h4>Comments - {{ comments.length }}</h4>
+  <div *ngFor="let comment of comments">
+    <p>
+      <strong>Author: {{ comment.author.firstName}} {{comment.author.surName}}</strong> -
+      <span>{{ comment.message }}</span>
+    </p>
+  </div>
+</div>
+

@@ -1,0 +1,10 @@
+<nav *ngIf="user$ | async">
+  <ul>
+    <li>
+      <a [routerLink]="['/requests/overview']">Requests</a>
+    </li>
+    <li *ngIf="isAdmin">
+      <a [routerLink]="['/admin']">Admin</a>
+    </li>
+  </ul>
+</nav>

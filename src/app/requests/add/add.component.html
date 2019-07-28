@@ -1,0 +1,24 @@
+<form [formGroup]="newRequest">
+  <p>{{errorMessage}}</p>
+  <fieldset>
+    <legend>New request</legend>
+    <label for="title">Title</label>
+    <input id="title" type="text" formControlName="title"/>
+    <br/>
+
+    <label for="priority">Select message priority</label>
+    <select id="priority" formControlName="priority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <br/>
+
+    <label for="message">Message</label>
+    <textarea id="message" formControlName="message"></textarea>
+    <br/>
+
+    <input type="submit" value="Add request" (click)="submitRequest()"/>
+    <input type="reset" value="Reset"/>
+  </fieldset>
+</form>

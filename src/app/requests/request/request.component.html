@@ -1,0 +1,23 @@
+<div class="request" 
+[ngClass]="{'request--completed': request?.isCompleted }"
+*ngIf="request$ | async as request">
+  <h1>{{ request.title }}</h1>
+  <dl>
+    <dt>Posted by:</dt>
+    <dd>{{ request.author.firstName }} {{request.author.surName}} </dd>
+    <dt>Date created:</dt>
+    <dd>{{ request.dateCreated | date: 'medium' }}</dd>
+  </dl>
+  <p>{{ request.message }}</p>
+  <ul *ngIf="hasUserUpdateRights(request._id)">
+    <li><a routerLink="/requests/edit/{{request._id}}">Edit</a></li>
+    <li><button (click)="deleteRequest(request._id)">Delete</button></li>
+  </ul>
+  <button (click)="markAsComplete(request)"
+  *ngIf="!request.isCompleted">Complete this request</button>
+  <requests-comment
+    [comments]="request.comments"
+    [requestID]="request._id"
+    (addCommentEventEmitter)="addComment($event)"></requests-comment>
+  <hr/>
+</div>

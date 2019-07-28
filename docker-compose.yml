@@ -1,0 +1,21 @@
+version: '3'
+services:
+  assist-server:
+    image: jamesnelson117/assist-api
+    environment:
+      - NODE_ENV=docker
+    ports:
+      - "3000:3000"
+    networks:
+      - assist-network
+    depends_on:
+      - "mongo"
+  mongo:
+    image: mongo
+    networks:
+      - assist-network
+    ports:
+      - "27017:27017"
+networks:
+  assist-network:
+    driver: bridge

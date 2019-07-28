@@ -1,0 +1,20 @@
+<a [routerLink]="['/requests/new']">Add a new request</a>
+<requests-search (searchResult)="filterResults($event)"></requests-search>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Priority</th>
+      <th>Date created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let request of requests$ | async | requestsFilter : searchTerm:'title'">
+      <td><a routerLink="/requests/{{request._id}}">{{ request.title }}</a></td>
+      <td>{{ request.author.firstName }} {{request.author.surName}}</td>
+      <td>{{ request.priority }}</td>
+      <td>{{ request.dateCreated | date: 'short' }}</td>
+    </tr>
+  </tbody>
+</table>
